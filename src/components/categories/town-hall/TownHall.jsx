@@ -5,16 +5,11 @@ const TownHall = async () => {
   const data = await getTownhall();
   return (
     <div className="townhall grid grid-cols-4 gap-5">
-      {data.map((item, idx) => {
-        return <Thcard key={idx} item={item} />;
-      })}
-
-      {/* <Thcard />
-      <Thcard />
-      <Thcard />
-      <Thcard />
-      <Thcard />
-      <Thcard /> */}
+      {data
+        ? data.map((item, idx) => {
+            return <Thcard key={idx} item={item} />;
+          })
+        : "Loading..."}
     </div>
   );
 };
