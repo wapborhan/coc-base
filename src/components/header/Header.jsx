@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <div className="navbar bg-base-100 shadow-md">
+    <header className="navbar bg-base-100 shadow-md">
       <div className="container lg:mx-36 md:mx-16 mx-0">
         <div className="flex-1">
           <a className="text-xl">COC Base</a>
@@ -26,7 +26,7 @@ const Header = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 
