@@ -1,0 +1,38 @@
+[
+  {
+    "_id": 0,
+    "title": "TH-1",
+    "image": "https://clashofclans-layouts.com/pics/th8_plans/war/preview/th8_war_104.jpg",
+    "link": "",
+    "mapType": "farming",
+    "type": "townhall",
+    "level": "th_3",
+    "addedYear": 2024,
+    "tags": ["2-star", "hybrid"],
+    "views": 100
+  },
+  {
+    "_id": 1,
+    "title": "TH-2",
+    "image": "https://clashofclans-layouts.com/pics/th8_plans/war/preview/th8_war_103.jpg",
+    "link": "",
+    "mapType": "farming",
+    "type": "townhall",
+    "level": "th_3",
+    "addedYear": 2024,
+    "tags": ["2-star", "hybrid"],
+    "views": 100
+  },
+  {
+    "_id": 0,
+    "title": "TH-3_Map-3",
+    "image": "https://clashofclans-layouts.com/pics/th8_plans/war/preview/th8_war_102.jpg",
+    "link": "",
+    "mapType": "farming",
+    "type": "townhall",
+    "level": "th_4",
+    "addedYear": 2024,
+    "tags": ["2-star", "hybrid"],
+    "views": 100
+  }
+]

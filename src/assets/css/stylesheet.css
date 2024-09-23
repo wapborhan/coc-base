@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Bungee';
+    src: url('Bungee-Regular.woff2') format('woff2'),
+        url('Bungee-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'coc-font';
+    src: url('./coc.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

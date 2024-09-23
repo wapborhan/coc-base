@@ -3,8 +3,9 @@ import Link from "next/link";
 import React from "react";
 
 const Thcard = ({ item }) => {
+  const { type, link } = item;
   return (
-    <Link href={`map/${item?.link}`}>
+    <Link href={`${type}/${link}`}>
       <div className="card min-w-16 bg-base-100 shadow-xl">
         <figure className="px-5 pt-5">
           <Image

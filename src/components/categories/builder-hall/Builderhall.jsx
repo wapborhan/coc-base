@@ -1,6 +1,7 @@
-import Thcard from "./Thcard";
+import React from "react";
+import Thcard from "../town-hall/Thcard";
 
-const TownHall = ({ data }) => {
+const Builderhall = ({ data }) => {
   return (
     <div className="townhall grid grid-cols-4 gap-5">
       {data.length > 0
@@ -12,4 +13,4 @@ const TownHall = ({ data }) => {
   );
 };
 
-export default TownHall;
+export default Builderhall;

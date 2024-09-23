@@ -7,6 +7,10 @@ module.exports = {
   ],
 
   theme: {
+    fontFamily: {
+      bungee: ["Bungee"],
+      coc: ["coc-font"],
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
