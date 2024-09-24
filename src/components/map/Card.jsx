@@ -12,7 +12,7 @@ const Card = ({ map }) => {
             <Image width={500} height={500} src={image} alt={title} />
           </div>
           <div className="icon">
-            <Link href={`${level}/${_id}`} className="iconBox">
+            <Link href={`${level}/details/${_id}`} className="iconBox">
               <span className="material-symbols-outlined">
                 <div className="ico">
                   <svg

@@ -1,5 +1,6 @@
 import Maps from "@/components/map/Maps";
 import axiosInstance from "@/utils/axiosInstance";
+
 const getMaps = async (id) => {
   try {
     const res = await axiosInstance.get(`/map/${id}`);
@@ -11,9 +12,10 @@ const getMaps = async (id) => {
 };
 const Map = async ({ params }) => {
   const maps = await getMaps(params.id);
+
   return (
     <>
-      <Maps maps={maps} id={params.id} />
+      <h1>Under Constraction</h1>
     </>
   );
 };

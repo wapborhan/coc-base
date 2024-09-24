@@ -15,7 +15,7 @@ const Map = async ({ params }) => {
 
   return (
     <>
-      <Maps maps={maps} id={params.id} />
+      <h1>Under Constraction</h1>
     </>
   );
 };
