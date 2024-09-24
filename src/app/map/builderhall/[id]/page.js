@@ -1,16 +1,20 @@
-"use client";
-
-import { useRouter } from "next/navigation";
-
-const Map = ({ params }) => {
-  const router = useRouter();
+import Maps from "@/components/map/Maps";
+import axiosInstance from "@/utils/axiosInstance";
+const getMaps = async (id) => {
+  try {
+    const res = await axiosInstance.get(`/map/${id}`);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching: ", error);
+    return [];
+  }
+};
+const Map = async ({ params }) => {
+  const maps = await getMaps(params.id);
   return (
-    <div className="flex gap-5">
-      TH is :{params.id}
-      <button type="button" onClick={() => router.push("/")}>
-        Back
-      </button>
-    </div>
+    <>
+      <Maps maps={maps} id={params.id} />
+    </>
   );
 };
 

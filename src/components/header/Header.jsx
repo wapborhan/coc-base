@@ -2,15 +2,15 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="navbar bg-base-100 shadow-md">
-      <div className="container lg:mx-36 md:mx-16 mx-0">
+    <header className="navbar bg-base-100 shadow-md py-4 px-24 fixed top-0 left-0 bg-white z-30 w-full">
+      <div className="container flex ">
         <div className="flex-1">
           <Link href="/" className="text-xl">
             COC Base
           </Link>
         </div>
         <div className="flex-none">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 flex gap-6">
             <li>
               <Link href="/map/townhall" className="">
                 Townhall

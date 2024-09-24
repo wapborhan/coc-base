@@ -3,26 +3,20 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
-      <nav className="grid grid-flow-col gap-4">
+    <footer className="footer text-center p-4 space-y-2 shadow shadow-slate-800 fixed bottom-0 bg-white w-full bg-base-200 text-base-content rounded">
+      <nav className="flex justify-center gap-4">
         <Link href="/" className="link link-hover">
           About us
         </Link>
         <Link href="/" className="link link-hover">
           Contact
         </Link>
-        <Link href="/" className="link link-hover">
-          Jobs
-        </Link>
-        <Link href="/" className="link link-hover">
-          Press kit
-        </Link>
       </nav>
 
       <aside>
         <p>
           Copyright © {new Date().getFullYear()} - All right reserved by COC
-          Base. | Developed by{" "}
+          Base. Developed by{" "}
           <Link href="http://www.srdreamlab.com">SR Dream Lab</Link>
         </p>
       </aside>
