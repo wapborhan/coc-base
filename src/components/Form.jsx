@@ -1,46 +1,36 @@
 "use client";
 import axiosInstance from "@/utils/axiosInstance";
-import { useState } from "react";
-
-const th = [
-  {
-    index: "townhall",
-    label: "TH-1",
-    value: "th_1",
-  },
-  {
-    index: "townhall",
-    label: "TH-2",
-    value: "th_2",
-  },
-  {
-    index: "townhall",
-    label: "TH-3",
-    value: "th_3",
-  },
-];
-
-const bh = [
-  {
-    index: "builderhall",
-    label: "BH-1",
-    value: "bh_1",
-  },
-  {
-    index: "builderhall",
-    label: "BH-2",
-    value: "bh_2",
-  },
-  {
-    index: "builderhall",
-    label: "BH-3",
-    value: "bh_3",
-  },
-];
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const Form = () => {
   const [selectedType, setSelectedType] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("");
+  const [th, setTh] = useState([]);
+  const [bh, setBh] = useState([]);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/hall?type=townhall`)
+      .then((res) => {
+        const data = res.data.map((item) => ({
+          label: item.link,
+          value: item.link,
+        }));
+        setTh(data);
+      })
+      .catch((err) => console.error(err));
+    axiosInstance
+      .get(`/hall?type=builderhall`)
+      .then((res) => {
+        const data = res.data.map((item) => ({
+          label: item.link,
+          value: item.link,
+        }));
+        setBh(data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   const submitContactForm = async (event) => {
     event.preventDefault();
@@ -60,9 +50,10 @@ const Form = () => {
     axiosInstance
       .post("/map", inputData)
       .then((res) => {
-        console.log(res.data);
-        event.target.reset();
-        alert("Added");
+        if (res.data.acknowledged === true) {
+          event.target.reset();
+          toast.success("Successfully toasted!");
+        }
       })
       .catch((err) => console.log(err));
   };

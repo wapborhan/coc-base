@@ -15,7 +15,7 @@ const Map = async ({ params }) => {
 
   return (
     <>
-      <Maps maps={maps} id={params.level} />
+      <Maps maps={maps} id={params.level} path={"townhall"} />
     </>
   );
 };

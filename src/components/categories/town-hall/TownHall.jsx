@@ -1,6 +1,6 @@
 import Thcard from "./Thcard";
 
-const TownHall = ({ data }) => {
+const TownHall = ({ data, path }) => {
   return (
     <div className="townhall grid grid-cols-4 gap-5">
       {data.length > 0

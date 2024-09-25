@@ -13,7 +13,7 @@ const Map = async ({ params }) => {
   const maps = await getMaps(params.level);
   return (
     <>
-      <Maps maps={maps} id={params.level} />
+      <Maps maps={maps} id={params.level} path={"builderhall"} />
     </>
   );
 };

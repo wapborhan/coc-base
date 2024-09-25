@@ -7,7 +7,7 @@ async function getTownhall() {
     const data = response.data;
     return data;
   } catch (error) {
-    console.error("Error fetching Allah names:", error);
+    console.error("Error fetching:", error);
     return [];
   }
 }
