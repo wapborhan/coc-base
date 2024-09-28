@@ -2,8 +2,8 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="navbar bg-base-100 shadow-md py-4 px-24 fixed top-0 left-0 bg-white z-30 w-full">
-      <div className="container flex ">
+    <header className="navbar bg-base-100 shadow-md py-4 lg:px-24 px-8 fixed top-0 left-0 bg-white z-30 w-full">
+      <div className="container flex">
         <div className="flex-1">
           <Link href="/" className="text-xl">
             COC Base

@@ -7,6 +7,7 @@ import Link from "next/link";
 const Maps = ({ maps, id, path }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [halls, setHalls] = useState([]);
+  const [filter, setFilter] = useState("ALL");
   const mapsPerPage = 9;
 
   useEffect(() => {
@@ -22,13 +23,18 @@ const Maps = ({ maps, id, path }) => {
       .catch((err) => console.error(err));
   }, [path]);
 
+  const filteredMaps = maps.filter((map) => {
+    if (filter === "ALL") return true;
+    return map.mapType === filter;
+  });
+
   // Calculate the indexes for the maps to be displayed
   const indexOfLastMap = currentPage * mapsPerPage;
   const indexOfFirstMap = indexOfLastMap - mapsPerPage;
-  const currentMaps = maps.slice(indexOfFirstMap, indexOfLastMap);
+  const currentMaps = filteredMaps.slice(indexOfFirstMap, indexOfLastMap);
 
   // Calculate total pages
-  const totalPages = Math.ceil(maps.length / mapsPerPage);
+  const totalPages = Math.ceil(filteredMaps.length / mapsPerPage);
 
   // Pagination handlers
   const nextPage = () => {
@@ -58,10 +64,46 @@ const Maps = ({ maps, id, path }) => {
             <div className="filter py-5 space-y-5">
               <h1>Map Type</h1>
               <ul>
-                <li>ALL</li>
-                <li>Farming</li>
-                <li>Defence</li>
-                <li>War</li>
+                <li
+                  className={
+                    filter === "ALL"
+                      ? "text-blue-500 cursor-auto"
+                      : "cursor-pointer"
+                  }
+                  onClick={() => setFilter("ALL")}
+                >
+                  ALL
+                </li>
+                <li
+                  className={
+                    filter === "farming"
+                      ? "text-blue-500 cursor-auto"
+                      : "cursor-pointer"
+                  }
+                  onClick={() => setFilter("farming")}
+                >
+                  Farming
+                </li>
+                <li
+                  className={
+                    filter === "defence"
+                      ? "text-blue-500 cursor-auto"
+                      : "cursor-pointer"
+                  }
+                  onClick={() => setFilter("defence")}
+                >
+                  Defence
+                </li>
+                <li
+                  className={
+                    filter === "war"
+                      ? "text-blue-500 cursor-auto"
+                      : "cursor-pointer"
+                  }
+                  onClick={() => setFilter("war")}
+                >
+                  War
+                </li>
               </ul>
             </div>
             <div className="filter space-y-3">
@@ -70,7 +112,7 @@ const Maps = ({ maps, id, path }) => {
                 {halls.map((hall) => {
                   const active = id === hall.link;
                   return (
-                    <Link href={`/map/townhall/${hall.link}`} key={hall.link}>
+                    <Link href={`/map/${path}/${hall.link}`} key={hall.link}>
                       <li
                         className={`capitalize ${active && "text-green-800"}`}
                       >
