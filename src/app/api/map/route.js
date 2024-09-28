@@ -1,4 +1,4 @@
-import { connectDatabase } from "../../../utils/db/db";
+import { connectDatabase } from "../../../utils/db";
 import { NextResponse } from "next/server";
 
 export const GET = async () => {

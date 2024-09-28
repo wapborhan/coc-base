@@ -12,7 +12,7 @@ const Header = () => {
             COC Base
           </Link>
         </div>
-        <div className="lg:flex-none hidden">
+        <div className="lg:flex hidden">
           <ul className="menu menu-horizontal px-1 flex gap-6">
             <li>
               <Link href="/map/townhall" className="">
@@ -46,7 +46,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="hambergarge text-lg">
+        <div className="lg:hidden hambergarge text-lg">
           {linkActive ? (
             <svg
               width="30"
