@@ -1,8 +1,8 @@
 import Thcard from "./Thcard";
 
-const TownHall = ({ data, path }) => {
+const Hall = ({ data }) => {
   return (
-    <div className="townhall grid grid-cols-4 gap-5">
+    <div className="hall grid lg:grid-cols-4  md:grid-cols-2 grid-cols-2 gap-5">
       {data.length > 0
         ? data.map((item, idx) => {
             return <Thcard key={idx} item={item} />;
@@ -12,4 +12,4 @@ const TownHall = ({ data, path }) => {
   );
 };
 
-export default TownHall;
+export default Hall;

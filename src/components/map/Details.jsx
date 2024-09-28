@@ -7,7 +7,7 @@ const Details = ({ mapsDetails }) => {
   const { image, title, link, tags, views, addedYear, mapType } = mapsDetails;
   const router = useRouter();
   return (
-    <div className="details w-10/12 mx-auto">
+    <div className="details lg:w-10/12 mx-auto">
       <div className="back py-5">
         <button
           className="flex gap-3 border-2 px-14 py-3 rounded-xl"
@@ -40,7 +40,7 @@ const Details = ({ mapsDetails }) => {
               </Link>
             </h1>
           </div>
-          <div className="flex justify-between">
+          <div className="flex flex-wrap gap-4 justify-between">
             <div className="tags flex gap-3 items-center">
               Tags:
               {tags.map((tag) => {
@@ -59,10 +59,10 @@ const Details = ({ mapsDetails }) => {
             </Link>
           ) : (
             <button
-              className="coc-btns buttons px-24 py-5 bg-green-600 rounded-xl"
+              className="coc-btns buttons lg:px-24 px-8 lg:py-5 py-2 bg-gray-300 rounded-xl"
               disabled
             >
-              <span>No Copy Link Available</span>
+              <span className="text-white">No Copy Link Available</span>
             </button>
           )}
         </div>

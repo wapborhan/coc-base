@@ -1,4 +1,4 @@
-import Builderhall from "@/components/categories/builder-hall/Builderhall";
+import Hall from "@/components/hall/Hall";
 import axiosInstance from "@/utils/axiosInstance";
 
 async function getTownhall() {
@@ -16,9 +16,9 @@ const page = async () => {
   const data = await getTownhall();
   return (
     <main className="w-full">
-      <div className="container py-10 px-20">
+      <div className="container lg:py-10 lg:px-20">
         <h1>Builderhall</h1>
-        <Builderhall data={data} />
+        <Hall data={data} />
       </div>
     </main>
   );

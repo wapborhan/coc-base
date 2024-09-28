@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import axiosInstance from "@/utils/axiosInstance";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Maps = ({ maps, id, path }) => {
+  const router = useRouter();
+  const [selectedBase, setSelectedBase] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [halls, setHalls] = useState([]);
   const [filter, setFilter] = useState("ALL");
@@ -27,6 +30,19 @@ const Maps = ({ maps, id, path }) => {
     if (filter === "ALL") return true;
     return map.mapType === filter;
   });
+
+  useEffect(() => {
+    const matchingHall = halls.find((hall) => hall.link === id); // Find the matching hall
+    if (matchingHall) {
+      setSelectedBase(`/map/${path}/${matchingHall.link}`); // Set the selected base if found
+    }
+  }, [id, halls, path]);
+
+  const handleSelectChange = (e) => {
+    const selectedUrl = e.target.value;
+    setSelectedBase(selectedUrl); // Update selected base state
+    router.push(selectedUrl); // Navigate to the selected URL
+  };
 
   // Calculate the indexes for the maps to be displayed
   const indexOfLastMap = currentPage * mapsPerPage;
@@ -57,8 +73,41 @@ const Maps = ({ maps, id, path }) => {
           Hall Level {id.split("_")[1]} Layouts
         </h1>
       </div>
+      <div className="sidenav lg:hidden flex justify-between">
+        <div className="filter">
+          <h1>Map Type</h1>
+          <select
+            name="mapType"
+            id="mapType"
+            className="border-2 p-2 rounded-lg"
+            onChange={(e) => setFilter(e.target.value)}
+          >
+            <option value="ALL">All</option>
+            <option value="farming">Farming</option>
+            <option value="defence">Defence</option>
+            <option value="war">War</option>
+          </select>
+        </div>
+        <div className="filter ">
+          <h1>Bases</h1>
+          <select
+            className="border-2 p-2 rounded-lg"
+            onChange={handleSelectChange}
+            defaultValue={selectedBase}
+          >
+            {halls.map((hall) => {
+              const baseUrl = `/map/${path}/${hall.link}`;
+              return (
+                <option value={baseUrl} key={hall.link}>
+                  {path} {"-"} {hall.link.split("_")[1]}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      </div>
       <div className="w-full flex justify-between gap-4 relative">
-        <div className="sidebar w-3/12 ">
+        <div className="sidebar lg:block hidden lg:w-3/12 w-5/12">
           <div className="sticky top-5">
             <h1 className="border-b-2">Filter</h1>
             <div className="filter py-5 space-y-5">
@@ -114,7 +163,9 @@ const Maps = ({ maps, id, path }) => {
                   return (
                     <Link href={`/map/${path}/${hall.link}`} key={hall.link}>
                       <li
-                        className={`capitalize ${active && "text-green-800"}`}
+                        className={`capitalize text-sm ${
+                          active && "text-green-800"
+                        }`}
                       >
                         {path} {"-"} {hall.link.split("_")[1]}
                       </li>
@@ -126,9 +177,9 @@ const Maps = ({ maps, id, path }) => {
           </div>
         </div>
 
-        <div className="maps w-9/12">
+        <div className="maps lg:w-9/12 w-full">
           <h1>Maps</h1>
-          <div className="grid grid-cols-3 gap-5 pt-5">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 pt-5">
             {currentMaps.length > 0
               ? currentMaps.map((item) => {
                   return <Card key={item?._id} map={item} />;
