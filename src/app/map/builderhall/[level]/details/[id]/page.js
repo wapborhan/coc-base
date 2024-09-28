@@ -1,9 +1,10 @@
+import Details from "@/components/map/Details";
 import Maps from "@/components/map/Maps";
 import axiosInstance from "@/utils/axiosInstance";
 
 const getMaps = async (id) => {
   try {
-    const res = await axiosInstance.get(`/map/${id}`);
+    const res = await axiosInstance.get(`/map/details/${id}`);
     return res.data;
   } catch (error) {
     console.error("Error fetching: ", error);
@@ -11,11 +12,11 @@ const getMaps = async (id) => {
   }
 };
 const Map = async ({ params }) => {
-  const maps = await getMaps(params.id);
+  const mapsDetails = await getMaps(params.id);
 
   return (
     <>
-      <h1>Under Constraction</h1>
+      <Details mapsDetails={mapsDetails} />
     </>
   );
 };
